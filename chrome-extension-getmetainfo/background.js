@@ -4,10 +4,14 @@ chrome.tabs.getAllInWindow(null, function(tabs) {
 	chrome.browserAction.setBadgeText({text:String(counter)});
 })
 ;
+
+// タブが追加された
 chrome.tabs.onCreated.addListener(function(tab) {
 	counter++;
 	chrome.browserAction.setBadgeText({text:String(counter)});
 });
+
+// タブが削除された
 chrome.tabs.onRemoved.addListener(function(tab) {
 	counter--;
 	chrome.browserAction.setBadgeText({ text:String(counter)});
